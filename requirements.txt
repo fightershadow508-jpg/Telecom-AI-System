@@ -1,12 +1,5 @@
-<<<<<<< HEAD
 streamlit
 pandas
-scikit-learn
+scikit-learn-intelex  # Final fix wali line
 joblib
-=======
-streamlit
-pandas
-scikit-learn
-joblib
->>>>>>> 7479d4846d1cc1ddd9cb9e041482f405c0be658c
 plotly
