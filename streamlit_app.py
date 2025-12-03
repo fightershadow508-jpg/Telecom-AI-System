@@ -1,14 +1,20 @@
 import streamlit as st
 import pandas as pd
 import os
-import subprocess # <-- Nayi library shamil ki
+import subprocess 
+
+# --- Setup Page Config (MUST be at the very top, before any st. function in the body) ---
+# NOTE: This ensures Streamlit detects the multi-page structure from the start.
+st.set_page_config(
+    page_title="Telecom Complaint Resolution System",
+    page_icon="🤖",
+    layout="wide",
+    initial_sidebar_state="expanded" # Sidebar hamesha khula rahega
+)
 
 # --- RUN TRAINING SCRIPT FIRST (Self-healing fix) ---
-# Check karte hain ke kya model file available hai. Agar nahi hai (deployment par), 
-# toh _train_model.py ko run karo taake woh zaroori .pkl aur .csv files bana de.
 if not os.path.exists('type_classifier_model.pkl'):
     try:
-        # _train_model.py ko chalao
         subprocess.run(["python", "_train_model.py"], check=True)
         print("INFO: _train_model.py executed successfully to create missing files.")
     except subprocess.CalledProcessError as e:
@@ -23,13 +29,6 @@ if not os.path.exists('type_classifier_model.pkl'):
 MANAGER_USERNAME = "manager"
 MANAGER_PASSWORD = "data_master"
 USER_FILE = "registered_users.csv"
-
-# --- Setup Page Config ---
-st.set_page_config(
-    page_title="Telecom Complaint Resolution System",
-    page_icon="🤖",
-    layout="wide"
-)
 
 # --- Utility Functions ---
 def load_users():
@@ -71,6 +70,8 @@ def set_page_access(is_manager):
 
 # Function to display the Home/Login screen
 def show_login_page():
+    
+    # NOTE: st.set_page_config is now outside the function
     
     if 'logged_in' not in st.session_state:
         st.session_state.logged_in = False
