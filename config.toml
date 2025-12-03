@@ -1,0 +1,8 @@
+[theme]
+# Professional Dark Theme
+base="dark"
+primaryColor="#2E86C1"  # Soft Blue for buttons/highlights
+backgroundColor="#0E1117" # Dark Background
+secondaryBackgroundColor="#1E232B" # Slightly lighter background for containers
+textColor="#FAFAFA"
+font="sans serif"
